@@ -6,7 +6,6 @@
     <title>Likha-Ani | Eco-Friendly Art</title>
     <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ── COLOR THEME (based on Likha-Ani logo) ── */
         :root {
             --cream:        #EDE8DF;
             --off-white:    #F7F3ED;
@@ -27,10 +26,63 @@
             font-family: 'Nunito', sans-serif;
             margin: 0;
             background-color: var(--cream);
-            background-image:
-                radial-gradient(ellipse at 20% 50%, rgba(90,128,64,0.06) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(212,184,150,0.15) 0%, transparent 50%);
             color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* ── RICE HUSK ANIMATION ── */
+        .rice-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .husk {
+            position: absolute;
+            top: -60px;
+            opacity: 0;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                opacity: 0;
+                transform: translateY(-60px) rotate(0deg);
+            }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.4; }
+            100% {
+                opacity: 0;
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        /* Individual husk positions and timings */
+        .husk:nth-child(1)  { left: 5%;   animation-duration: 9s;  animation-delay: 0s;   width: 28px; }
+        .husk:nth-child(2)  { left: 12%;  animation-duration: 12s; animation-delay: 2s;   width: 18px; }
+        .husk:nth-child(3)  { left: 22%;  animation-duration: 10s; animation-delay: 5s;   width: 24px; }
+        .husk:nth-child(4)  { left: 33%;  animation-duration: 14s; animation-delay: 1s;   width: 20px; }
+        .husk:nth-child(5)  { left: 45%;  animation-duration: 11s; animation-delay: 4s;   width: 30px; }
+        .husk:nth-child(6)  { left: 55%;  animation-duration: 13s; animation-delay: 7s;   width: 16px; }
+        .husk:nth-child(7)  { left: 65%;  animation-duration: 8s;  animation-delay: 3s;   width: 22px; }
+        .husk:nth-child(8)  { left: 74%;  animation-duration: 15s; animation-delay: 6s;   width: 26px; }
+        .husk:nth-child(9)  { left: 83%;  animation-duration: 10s; animation-delay: 2s;   width: 19px; }
+        .husk:nth-child(10) { left: 92%;  animation-duration: 12s; animation-delay: 8s;   width: 23px; }
+        .husk:nth-child(11) { left: 18%;  animation-duration: 11s; animation-delay: 10s;  width: 27px; }
+        .husk:nth-child(12) { left: 38%;  animation-duration: 9s;  animation-delay: 11s;  width: 21px; }
+        .husk:nth-child(13) { left: 58%;  animation-duration: 14s; animation-delay: 9s;   width: 17px; }
+        .husk:nth-child(14) { left: 78%;  animation-duration: 10s; animation-delay: 12s;  width: 25px; }
+        .husk:nth-child(15) { left: 88%;  animation-duration: 13s; animation-delay: 3s;   width: 20px; }
+
+        /* Make sure content sits above husks */
+        header, nav, .hero, .content, footer {
+            position: relative;
+            z-index: 1;
         }
 
         /* ── HEADER ── */
@@ -46,22 +98,22 @@
         }
 
         header img.logo {
-            height: 150px;
+            height: 200px;
             position: absolute;
-            left: 30px;
-            top: 20px;
+            left: 85px;
+            top: 50px;
         }
 
         header img.qr-code {
-            height: 150px;
+            height: 200px;
             position: absolute;
-            right: 30px;
-            top: 20px;
+            right: 100px;
+            top: 50px;
         }
 
         header h1 {
             margin: 0;
-            font-size: 6rem;
+            font-size: 12rem;
             color: var(--forest-green);
             text-shadow: 2px 2px 0px rgba(212,184,150,0.6);
         }
@@ -92,14 +144,13 @@
         nav a:hover {
             background-color: var(--gold);
             color: var(--text-dark);
-            text-decoration: none;
         }
 
         /* ── HERO ── */
         .hero {
             background-image: url("images/group_photo.png");
             background-size: cover;
-            background-position: center 39%;
+            background-position: center 43%;
             height: 400px;
             display: flex;
             align-items: center;
@@ -123,7 +174,7 @@
             background-color: rgba(58,92,42,0.75);
             padding: 14px 28px;
             border-radius: 10px;
-            border-right: 3px solid var(--sand);
+            border-right: 100px;: 3px solid var(--sand);
             position: relative;
             z-index: 1;
             overflow: hidden;
@@ -139,7 +190,7 @@
         }
 
         @keyframes blink {
-            50% { border-right-color: transparent; }
+            50% { border-right: 100px;-color: transparent; }
         }
 
         /* ── CONTENT ── */
@@ -149,25 +200,7 @@
             margin: auto;
         }
 
-        .content h3 {
-            color: var(--forest-green);
-        }
-
-        /* ── GROUP PHOTO ── */
-        .group-photo,
-        .group_photo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .group-photo img,
-        .group_photo img {
-            border-radius: 10px;
-            border: 3px solid var(--sand);
-            width: 60%;
-            max-width: 300px;
-            box-shadow: 4px 4px 16px rgba(139,94,60,0.15);
-        }
+        .content h3 { color: var(--forest-green); }
 
         /* ── PROBLEM SECTION ── */
         .problem-title {
@@ -208,10 +241,7 @@
             color: var(--text-mid);
         }
 
-        .problem-section div.text {
-            flex: 2;
-            min-width: 250px;
-        }
+        .problem-section div.text { flex: 2; min-width: 250px; }
 
         /* ── PRODUCTS ── */
         .product-title {
@@ -231,7 +261,7 @@
         }
 
         .product-card {
-            background-color: var(--off-white);
+            background-color: var(--off-height: 150);
             border: 2px solid var(--sand);
             border-radius: 14px;
             padding: 24px;
@@ -260,14 +290,11 @@
             font-size: 1.2rem;
         }
 
-        .product-card p {
-            color: var(--text-mid);
-            font-size: 0.95rem;
-        }
+        .product-card p { color: var(--text-mid); font-size: 0.95rem; }
 
         .cart-button {
             background-color: var(--forest-green);
-            color: var(--off-white);
+            color: var(--off-height: 150);
             border: none;
             padding: 10px 24px;
             margin-top: 10px;
@@ -292,21 +319,9 @@
             color: var(--brown);
         }
 
-        #contact p {
-            color: var(--text-mid);
-            font-size: 1.05rem;
-        }
-
-        #contact a {
-            color: var(--forest-green);
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        #contact a:hover {
-            color: var(--brown);
-            text-decoration: underline;
-        }
+        #contact p { color: var(--text-mid); font-size: 1.05rem; }
+        #contact a { color: var(--forest-green); font-weight: 700; text-decoration: none; }
+        #contact a:hover { color: var(--brown); text-decoration: underline; }
 
         /* ── FOOTER ── */
         footer {
@@ -318,44 +333,106 @@
             font-size: 0.95rem;
         }
 
-        footer a {
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 700;
-            transition: color 0.2s;
-        }
-
-        footer a:hover {
-            color: var(--sand);
-            text-decoration: underline;
-        }
+        footer a { color: var(--gold); text-decoration: none; font-weight: 700; }
+        footer a:hover { color: var(--sand); text-decoration: underline; }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .problem-section {
-                flex-direction: column;
-            }
-
-            header h1 {
-                font-size: 4rem;
-            }
-
-            header img.logo,
-            header img.qr-code {
-                height: 100px;
-            }
-
+            .problem-section { flex-direction: column; }
+            header h1 { font-size: 4rem; }
+            header img.logo, header img.qr-code { height: 100px; }
             .hero h2 {
                 font-size: 1.4rem;
                 white-space: normal;
                 width: auto;
                 animation: none;
-                border-right: none;
+                border-right: 100px;: none;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- ── FLOATING RICE HUSKS ── -->
+    <div class="rice-container">
+        <!-- Rice husk SVG: realistic oval grain shape with pointed ends -->
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#F5C518" opacity="0.7"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#D4B896" opacity="0.6"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#8B5E3C" stroke-width="0.5" opacity="0.4"/>
+            <path d="M15 1 Q18 0 28 6 Q18 12 15 11 Q18 6 15 1Z" fill="#FFCA28" opacity="0.3"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#E6B800" opacity="0.5"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#C9A84C" opacity="0.5"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#6B4428" stroke-width="0.5" opacity="0.4"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#D4B896" opacity="0.6"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#C9A84C" opacity="0.5"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#8B5E3C" stroke-width="0.5" opacity="0.4"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#C9A84C" opacity="0.6"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#FFF176" opacity="0.5"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#8B5E3C" stroke-width="0.5" opacity="0.3"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#E6B800" opacity="0.4"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#D4B896" opacity="0.5"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#6B4428" stroke-width="0.5" opacity="0.4"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#F5C518"opacity="0.5"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#D4B896" opacity="0.4"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#8B5E3C" stroke-width="0.5" opacity="0.3"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#D4B896" opacity="0.7"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#F5C518" opacity="0.5"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#8B5E3C" stroke-width="0.5" opacity="0.4"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#E6B800" opacity="0.5"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#F5C518" opacity="0.4"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#6B4428" stroke-width="0.5" opacity="0.3"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#F5C518" opacity="0.6"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#FFD700" opacity="0.5"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#8B5E3C" stroke-width="0.5" opacity="0.4"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#FFD700" opacity="0.5"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#E6B800" opacity="0.4"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#6B4428" stroke-width="0.5" opacity="0.3"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#F5C518" opacity="0.7"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#FFD700" opacity="0.6"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#8B5E3C" stroke-width="0.5" opacity="0.4"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#E6B800" opacity="0.5"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#F5C518" opacity="0.4"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#6B4428" stroke-width="0.5" opacity="0.3"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#FFD700"opacity="0.6"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#F5C518" opacity="0.5"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#8B5E3C" stroke-width="0.5" opacity="0.4"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#F5C518" opacity="0.5"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#FFD700" opacity="0.4"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#8B5E3C" stroke-width="0.5" opacity="0.3"/>
+        </svg>
+        <svg class="husk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 12">
+            <ellipse cx="15" cy="6" rx="13" ry="5" fill="#E6B800" opacity="0.6"/>
+            <ellipse cx="15" cy="6" rx="11" ry="3.5" fill="#FFD700" opacity="0.5"/>
+            <line x1="2" y1="6" x2="28" y2="6" stroke="#6B4428" stroke-width="0.5" opacity="0.4"/>
+        </svg>
+    </div>
 
     <header>
         <img src="images/logo.png" alt="Likha-Ani" class="logo">
@@ -374,7 +451,6 @@
     </section>
 
     <section class="content" id="about">
-        
         <h3 class="problem-title">The Problem</h3>
         <div class="problem-section">
             <img src="images/problem.jpg" alt="Agricultural Waste Problem">
